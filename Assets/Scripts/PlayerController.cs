@@ -7,6 +7,9 @@ public class PlayerController : MonoBehaviour
     public float horizontalInput;
     public float speed = 10.0f;
     private float xRange = 20.0f;
+
+    public GameObject projectilePrefab;
+
     void Start()
     {
         
@@ -20,7 +23,7 @@ public class PlayerController : MonoBehaviour
         transform.Translate(Vector3.right * Time.deltaTime * horizontalInput * speed);
 
         //player boundaries
-        if(transform.position.x > xRange)
+        if (transform.position.x > xRange)
         {
             transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
         }
@@ -30,5 +33,10 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(-xRange, transform.position.y, transform.position.z);
         }
 
+        //instantiate food from player position
+        if (Input.GetKeyDown(KeyCode.Space)) 
+        {
+            Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
+        }
     }
 }
