@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     {
         //movement
         horizontalInput = Input.GetAxis("Horizontal");
-        transform.Translate(Vector3.right * Time.deltaTime * horizontalInput * speed);
+        transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * speed);
 
         //player boundaries
         if (transform.position.x > xRange)
